@@ -23,6 +23,7 @@ var token = await tokenService.GetToken(scope);
 
 client.SetBearerToken(token.AccessToken);
 
+
 using var response = await client.GetAsync(apiUrl);
 
 Console.WriteLine("WebApi client!");

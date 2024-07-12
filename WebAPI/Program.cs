@@ -15,10 +15,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.Authority = "https://localhost:5001";
-        options.Audience = "https://localhost:5001/resources";
         options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
-        options.TokenValidationParameters.ValidateIssuerSigningKey = true;
-        options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("key"));
+        options.TokenValidationParameters.ValidateAudience = false;
+        options.TokenValidationParameters.IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("511536EF-F270-4058-80CA-1C89C192F69AA"));
        
     });
 

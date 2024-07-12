@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebClientApp.Models;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace WebClientApp.Controllers
 {
@@ -28,8 +29,9 @@ namespace WebClientApp.Controllers
         [Authorize]
         public async Task<IActionResult> UserPageAsync()
         {
-            string? token = await HttpContext.GetTokenAsync("access_token");
-            return View(new UserPageViewModel { Token = token is not null ? token : "no token" });
+;           var name = User.Claims; 
+            var token = await HttpContext.GetTokenAsync("access_token");
+            return View(new UserPageViewModel { Token = token is not null ? $"{token} : {name}" : "no token" }) ;
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -1,4 +1,6 @@
-﻿using Duende.IdentityServer.Models;
+﻿using System.Security.Claims;
+using Duende.IdentityServer.Models;
+using IdentityModel;
 
 namespace MyIdentity
 {
@@ -37,7 +39,6 @@ namespace MyIdentity
 
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69AA".Sha256()) },
-
                 AllowedScopes = { "WebApi.read", "WebApi.write" }
             },
 
